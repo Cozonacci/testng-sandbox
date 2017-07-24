@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="First Suite" verbose="1">
+    <test name="First Test">
+        <classes>
+            <class name="com.sandbox.training.testng.SampleTest">
+                <methods>
+                    <include name="shouldTriggerTestViaTestNG"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Second Test">
+        <classes>
+            <class name="com.sandbox.training.testng.SecondTest"/>
+        </classes>
+    </test>
+</suite>
