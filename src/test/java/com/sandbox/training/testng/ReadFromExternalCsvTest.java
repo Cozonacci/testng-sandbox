@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class ReadFromExternalCsvTest {
 
     @Test(dataProvider = "ExternalCsvData", parameters = {"keyword", "username"})
-    @CsvDataProvider(columns = {"keyword", "username"}, filePath = "src/test/resources/testdata/file.csv")
+    @CsvDataProvider(columns = {"keyword", "username"}, filePath = "/src/test/resources/testdata/file.csv")
     public void outputTestDataFromCsv(String keyword, String username) {
         System.out.println(keyword + " " + username);
     }
@@ -27,5 +27,4 @@ public class ReadFromExternalCsvTest {
 
         return new CSVReader().getTestData(columns, filepath);
     }
-
 }
