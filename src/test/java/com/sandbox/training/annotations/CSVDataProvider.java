@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 public @interface CsvDataProvider {
 
     String[] columns();
-    String filepath();
+    String filePath();
 
 }

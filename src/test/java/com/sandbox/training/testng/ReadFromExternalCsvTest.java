@@ -5,6 +5,7 @@ import com.sandbox.training.csvreader.CSVReader;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -13,18 +14,18 @@ import java.lang.reflect.Method;
 public class ReadFromExternalCsvTest {
 
     @Test(dataProvider = "ExternalCsvData", parameters = {"keyword", "username"})
-    @CsvDataProvider(columns = {"keyword", "username"}, filepath = "testdata/file.csv")
+    @CsvDataProvider(columns = {"keyword", "username"}, filePath = "src/test/resources/testdata/file.csv")
     public void outputTestDataFromCsv(String keyword, String username) {
         System.out.println(keyword + " " + username);
     }
 
     @DataProvider(name = "ExternalCsvData")
-    public static Object[][] testDataFromCsv(final Method csvDataProvider) {
+    public static Object[][] testDataFromCsv(final Method csvDataProvider) throws IOException {
         CsvDataProvider parameters = csvDataProvider.getAnnotation(CsvDataProvider.class);
         String[] columns = parameters.columns();
-        String filepath = parameters.filepath();
+        String filepath = parameters.filePath();
 
-        return CSVReader.getTestData(columns, filepath);
+        return new CSVReader().getTestData(columns, filepath);
     }
 
 }
