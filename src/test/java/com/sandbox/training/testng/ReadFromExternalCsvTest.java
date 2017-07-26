@@ -18,7 +18,7 @@ public class ReadFromExternalCsvTest {
 
     @Test(dataProvider = "ExternalCsvData", parameters = {"keyword", "username", "test", "accepted"})
     @CsvDataProvider(filePath = "/testdata/file.csv")
-    public void outputTestDataFromCsvAllColumns(String keyword, String username, String test, String accepted) {
+    public void outputTestDataFromCsvAllColumns(String keyword, String username, String test, boolean accepted) {
         System.out.println(keyword + " " + username + " " + test + " " + accepted);
     }
 

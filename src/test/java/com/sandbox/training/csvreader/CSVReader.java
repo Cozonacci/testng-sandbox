@@ -5,18 +5,15 @@ import com.sandbox.training.utils.FileUtils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class CSVReader {
 
-    private final Integer HEADER_ROW = 0;
-    private final String CSV_SEPARATOR = ",";
-
     private CSVFile csvFile = new CSVFile();
-    private Map<String, List<String>> parameters = new HashMap<>();
-
+    private Map<String, List<String>> parameters = new LinkedHashMap<>();
 
     public Object[][] getTestData(String[] columns, String filePath) throws IOException {
 
@@ -38,7 +35,15 @@ public class CSVReader {
                 String csvColumn = csvParameters.get(column).get(j);
 
                 if (csvColumn != null) {
-                    testData[j][i] = csvParameters.get(column).get(j).trim();
+                    String value = csvParameters.get(column).get(j).trim();
+
+                    if (value.startsWith("(bool)")) {
+                        testData[j][i] = Boolean.valueOf(value.substring(6));
+                    } else if (value.startsWith("(date)")) {
+                        testData[j][i] = LocalDateTime.parse(value.substring(6));
+                    } else {
+                        testData[j][i] = value;
+                    }
                 }
             }
         }
