@@ -26,8 +26,8 @@ public class ReadFromExternalCsvTest {
     public static Object[][] testDataFromCsv(final Method csvDataProvider) throws IOException {
         CsvDataProvider parameters = csvDataProvider.getAnnotation(CsvDataProvider.class);
         String[] columns = parameters.columns();
-        String filepath = parameters.filePath();
+        String filePath = parameters.filePath();
 
-        return new CSVReader().getTestData(columns, filepath);
+        return new CSVReader().getTestData(columns, filePath);
     }
 }
