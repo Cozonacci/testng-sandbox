@@ -2,9 +2,6 @@ package com.sandbox.training.testng;
 
 import org.testng.annotations.Test;
 
-/**
- * Created by dchicu on 7/23/2017.
- */
 public class SampleTest {
 
     @Test

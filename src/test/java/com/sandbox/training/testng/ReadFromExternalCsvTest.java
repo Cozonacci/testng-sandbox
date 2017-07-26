@@ -8,15 +8,18 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-/**
- * Created by dchicu on 7/23/2017.
- */
 public class ReadFromExternalCsvTest {
 
     @Test(dataProvider = "ExternalCsvData", parameters = {"keyword", "username"})
-    @CsvDataProvider(columns = {"keyword", "username"}, filePath = "/src/test/resources/testdata/file.csv")
+    @CsvDataProvider(columns = {"keyword", "username"}, filePath = "/testdata/file.csv")
     public void outputTestDataFromCsv(String keyword, String username) {
         System.out.println(keyword + " " + username);
+    }
+
+    @Test(dataProvider = "ExternalCsvData", parameters = {"keyword", "username", "test", "accepted"})
+    @CsvDataProvider(filePath = "/testdata/file.csv")
+    public void outputTestDataFromCsvAllColumns(String keyword, String username, String test, String accepted) {
+        System.out.println(keyword + " " + username + " " + test + " " + accepted);
     }
 
     @DataProvider(name = "ExternalCsvData")
