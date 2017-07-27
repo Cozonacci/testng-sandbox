@@ -1,0 +1,6 @@
+keyword,username,test ,accepted
+first  ,civanov ,test1,(bool)true
+second ,test2   ,test2,(bool)true
+third  ,test3   ,test3,(bool)true
+fourth ,test4   ,test4,(bool)true
+fifth  ,test5   ,test5,(bool)false
