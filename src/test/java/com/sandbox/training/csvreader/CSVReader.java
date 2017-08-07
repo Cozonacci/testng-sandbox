@@ -30,13 +30,10 @@ public class CSVReader {
 
         for (int i = 0; i < columns.length; i++) {
             String column = columns[i];
-
             for (int j = 0; j < csvParameters.get(columns[0]).size(); j++) {
                 String csvColumn = csvParameters.get(column).get(j);
-
                 if (csvColumn != null) {
                     String value = csvParameters.get(column).get(j).trim();
-
                     if (value.startsWith("(bool)")) {
                         testData[j][i] = Boolean.valueOf(value.substring(6));
                     } else if (value.startsWith("(date)")) {
